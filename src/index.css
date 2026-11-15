@@ -1,0 +1,634 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Custom sleek scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.25);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.45);
+  }
+}
+
+/* =========================================================================
+   TYPOGRAPHY THEMES (SCREEN & LIVE PREVIEW)
+   ========================================================================= */
+
+/* 1. Moderna (Inter) */
+.theme-font-modern,
+.theme-font-modern .markdown-body,
+.theme-font-modern .markdown-body p,
+.theme-font-modern .markdown-body li,
+.theme-font-modern .markdown-body td,
+.theme-font-modern .markdown-body th,
+.theme-font-modern .markdown-body h1,
+.theme-font-modern .markdown-body h2,
+.theme-font-modern .markdown-body h3,
+.theme-font-modern .markdown-body h4 {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* 2. Académica / Editorial (Merriweather Serif) */
+.theme-font-academic,
+.theme-font-academic .markdown-body,
+.theme-font-academic .markdown-body p,
+.theme-font-academic .markdown-body li,
+.theme-font-academic .markdown-body td,
+.theme-font-academic .markdown-body th,
+.theme-font-academic .markdown-body h1,
+.theme-font-academic .markdown-body h2,
+.theme-font-academic .markdown-body h3,
+.theme-font-academic .markdown-body h4,
+.theme-font-academic .markdown-body blockquote {
+  font-family: 'Merriweather', Georgia, Cambria, 'Times New Roman', serif !important;
+}
+.theme-font-academic .markdown-body p {
+  line-height: 1.85 !important;
+}
+
+/* 3. Tech / Desarrollador (Fira Code Monospace) */
+.theme-font-tech,
+.theme-font-tech .markdown-body,
+.theme-font-tech .markdown-body p,
+.theme-font-tech .markdown-body li,
+.theme-font-tech .markdown-body td,
+.theme-font-tech .markdown-body th,
+.theme-font-tech .markdown-body h1,
+.theme-font-tech .markdown-body h2,
+.theme-font-tech .markdown-body h3,
+.theme-font-tech .markdown-body h4 {
+  font-family: 'Fira Code', 'JetBrains Mono', Consolas, Monaco, monospace !important;
+}
+
+/* Markdown Prose Styling for Screen */
+.markdown-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: inherit;
+}
+
+.markdown-body h1 {
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  padding-bottom: 0.4rem;
+}
+
+.markdown-body h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.markdown-body p {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body strong {
+  font-weight: 700;
+}
+
+.markdown-body a {
+  color: #0284c7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+.markdown-body a:hover {
+  color: #0369a1;
+}
+
+.markdown-body hr {
+  border: 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  margin: 2rem 0;
+}
+
+.markdown-body ul:not(.task-list) {
+  list-style-type: disc;
+  padding-left: 1.6rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+  padding-left: 1.6rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body code:not(pre code) {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  border-radius: 0.375rem;
+  background-color: rgba(148, 163, 184, 0.15);
+  color: #0284c7;
+}
+
+.dark .markdown-body code:not(pre code) {
+  background-color: rgba(2, 132, 199, 0.12);
+  color: #38bdf8;
+}
+
+/* Callout Styling on Screen */
+.callout-blue {
+  background-color: rgba(14, 165, 233, 0.08);
+  border-color: #0ea5e9;
+  color: #0369a1;
+}
+.dark .callout-blue {
+  background-color: rgba(14, 165, 233, 0.12);
+  border-color: #38bdf8;
+  color: #bae6fd;
+}
+
+.callout-emerald {
+  background-color: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+  color: #047857;
+}
+.dark .callout-emerald {
+  background-color: rgba(16, 185, 129, 0.12);
+  border-color: #34d399;
+  color: #a7f3d0;
+}
+
+.callout-purple {
+  background-color: rgba(168, 85, 247, 0.08);
+  border-color: #a855f7;
+  color: #7e22ce;
+}
+.dark .callout-purple {
+  background-color: rgba(168, 85, 247, 0.12);
+  border-color: #c084fc;
+  color: #e9d5ff;
+}
+
+.callout-amber {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-color: #f59e0b;
+  color: #b45309;
+}
+.dark .callout-amber {
+  background-color: rgba(245, 158, 11, 0.12);
+  border-color: #fbbf24;
+  color: #fde68a;
+}
+
+.callout-rose {
+  background-color: rgba(244, 63, 94, 0.08);
+  border-color: #f43f5e;
+  color: #be123c;
+}
+.dark .callout-rose {
+  background-color: rgba(244, 63, 94, 0.12);
+  border-color: #fb7185;
+  color: #fecdd3;
+}
+
+.callout-badge {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* Tables Styling on Screen */
+.table-container table {
+  width: 100%;
+}
+.table-container table th {
+  padding: 0.75rem 1rem;
+  background-color: rgba(241, 245, 249, 0.8);
+  font-weight: 700;
+}
+.dark .table-container table th {
+  background-color: rgba(30, 41, 59, 0.8);
+}
+.table-container table td {
+  padding: 0.75rem 1rem;
+}
+
+/* =========================================================================
+   PROFESSIONAL HIGH-FIDELITY PRINT & PDF ENGINE
+   ========================================================================= */
+@media print {
+  /* Default page configuration */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  body.print-letter {
+    page: letter-page;
+  }
+  @page letter-page {
+    size: letter portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  body.print-landscape {
+    page: landscape-page;
+  }
+  @page landscape-page {
+    size: A4 landscape;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  /* Universal print color and rendering accuracy */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Completely reset root containers to plain white and 100% full width */
+  html,
+  body,
+  #root,
+  #root > div {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Hide application UI elements */
+  #app-navbar,
+  #app-toolbar,
+  #app-statsbar,
+  #editor-container,
+  #toc-sidebar,
+  .copy-code-btn,
+  .anchor-link,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Expand viewport containers so there is NO split column or black sidebar */
+  #main-viewport,
+  #preview-viewport,
+  #preview-scroll-area {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Document sheet occupies full paper width */
+  #preview-document-sheet {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    zoom: 1 !important;
+  }
+
+  /* PRINT TYPOGRAPHY OVERRIDES */
+  .theme-font-academic .markdown-body,
+  .theme-font-academic .markdown-body p,
+  .theme-font-academic .markdown-body li,
+  .theme-font-academic .markdown-body td,
+  .theme-font-academic .markdown-body th,
+  .theme-font-academic .markdown-body h1,
+  .theme-font-academic .markdown-body h2,
+  .theme-font-academic .markdown-body h3,
+  .theme-font-academic .markdown-body h4,
+  body.font-academic .markdown-body,
+  body.font-academic .markdown-body p,
+  body.font-academic .markdown-body li,
+  body.font-academic .markdown-body td,
+  body.font-academic .markdown-body th,
+  body.font-academic .markdown-body h1,
+  body.font-academic .markdown-body h2,
+  body.font-academic .markdown-body h3,
+  body.font-academic .markdown-body h4 {
+    font-family: 'Merriweather', Georgia, serif !important;
+  }
+
+  .theme-font-tech .markdown-body,
+  .theme-font-tech .markdown-body p,
+  .theme-font-tech .markdown-body li,
+  .theme-font-tech .markdown-body td,
+  .theme-font-tech .markdown-body th,
+  .theme-font-tech .markdown-body h1,
+  .theme-font-tech .markdown-body h2,
+  .theme-font-tech .markdown-body h3,
+  .theme-font-tech .markdown-body h4,
+  body.font-tech .markdown-body,
+  body.font-tech .markdown-body p,
+  body.font-tech .markdown-body li,
+  body.font-tech .markdown-body td,
+  body.font-tech .markdown-body th,
+  body.font-tech .markdown-body h1,
+  body.font-tech .markdown-body h2,
+  body.font-tech .markdown-body h3,
+  body.font-tech .markdown-body h4 {
+    font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace !important;
+  }
+
+  .theme-font-modern .markdown-body,
+  .theme-font-modern .markdown-body p,
+  .theme-font-modern .markdown-body li,
+  .theme-font-modern .markdown-body td,
+  .theme-font-modern .markdown-body th,
+  .theme-font-modern .markdown-body h1,
+  .theme-font-modern .markdown-body h2,
+  .theme-font-modern .markdown-body h3,
+  .theme-font-modern .markdown-body h4,
+  body.font-modern .markdown-body,
+  body.font-modern .markdown-body p,
+  body.font-modern .markdown-body li,
+  body.font-modern .markdown-body td,
+  body.font-modern .markdown-body th,
+  body.font-modern .markdown-body h1,
+  body.font-modern .markdown-body h2,
+  body.font-modern .markdown-body h3,
+  body.font-modern .markdown-body h4 {
+    font-family: 'Inter', system-ui, sans-serif !important;
+  }
+
+  /* Ensure deep high-contrast text color across ALL elements */
+  .markdown-body {
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.65 !important;
+  }
+
+  .markdown-body p,
+  .markdown-body span:not(.hljs *):not(.callout-badge),
+  .markdown-body div:not(.code-header):not(.callout-header),
+  .markdown-body li,
+  .markdown-body td,
+  .markdown-body th,
+  .markdown-body strong,
+  .markdown-body em,
+  .markdown-body hr,
+  .katex,
+  .katex-html,
+  .katex-html * {
+    color: #0f172a !important;
+    text-shadow: none !important;
+  }
+
+  /* Clear Headings with strict page-break control */
+  .markdown-body h1 {
+    color: #0f172a !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+    font-size: 22pt !important;
+    font-weight: 800 !important;
+    margin-top: 18pt !important;
+    margin-bottom: 10pt !important;
+    padding-bottom: 4pt !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .markdown-body h2 {
+    color: #1e293b !important;
+    border-bottom: 1.5px solid #e2e8f0 !important;
+    font-size: 16pt !important;
+    font-weight: 700 !important;
+    margin-top: 16pt !important;
+    margin-bottom: 8pt !important;
+    padding-bottom: 3pt !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .markdown-body h3 {
+    color: #334155 !important;
+    font-size: 13pt !important;
+    font-weight: 600 !important;
+    margin-top: 14pt !important;
+    margin-bottom: 6pt !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Prevent page cuts inside structured blocks */
+  .code-block-wrapper,
+  .table-container,
+  .callout-card,
+  .mermaid-container,
+  blockquote,
+  table,
+  tr,
+  pre,
+  img,
+  svg {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Clean Code Blocks in Print */
+  .code-block-wrapper {
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    margin: 12pt 0 !important;
+  }
+
+  .code-header {
+    background: #f1f5f9 !important;
+    background-color: #f1f5f9 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    padding: 4pt 10pt !important;
+  }
+
+  .code-header span {
+    color: #1e293b !important;
+    font-weight: 600 !important;
+  }
+
+  .code-block-wrapper pre {
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    padding: 8pt 10pt !important;
+    font-size: 9.5pt !important;
+    line-height: 1.5 !important;
+  }
+
+  .hljs {
+    background: transparent !important;
+    color: #0f172a !important;
+  }
+
+  /* Syntax highlights in print - high contrast */
+  .hljs-keyword, .hljs-selector-tag, .hljs-subst { color: #6d28d9 !important; font-weight: 600 !important; }
+  .hljs-string, .hljs-title, .hljs-section, .hljs-attribute, .hljs-literal, .hljs-template-tag, .hljs-template-variable, .hljs-type { color: #047857 !important; }
+  .hljs-comment, .hljs-quote, .hljs-deletion, .hljs-meta { color: #64748b !important; font-style: italic !important; }
+  .hljs-number, .hljs-regexp, .hljs-link { color: #b45309 !important; }
+  .hljs-variable { color: #be123c !important; }
+  .hljs-built_in, .hljs-builtin-name { color: #0369a1 !important; font-weight: 600 !important; }
+
+  /* Inline code in print */
+  .markdown-body code:not(pre code) {
+    background-color: #f1f5f9 !important;
+    color: #0369a1 !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 0.1em 0.35em !important;
+    border-radius: 3px !important;
+    font-size: 9.5pt !important;
+  }
+
+  /* Table styling in print */
+  .table-container {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    margin: 14pt 0 !important;
+    overflow: visible !important;
+  }
+
+  .table-container table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .table-container thead {
+    background-color: #f1f5f9 !important;
+    background: #f1f5f9 !important;
+  }
+
+  .table-container th {
+    background-color: #f1f5f9 !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    padding: 6pt 10pt !important;
+    font-size: 10pt !important;
+  }
+
+  .table-container td {
+    border-bottom: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+    padding: 6pt 10pt !important;
+    font-size: 10pt !important;
+  }
+
+  /* Callout styling in print */
+  .callout-card {
+    border-radius: 6px !important;
+    border-width: 1px !important;
+    border-left-width: 5px !important;
+    padding: 10pt 12pt !important;
+    margin: 12pt 0 !important;
+  }
+
+  .callout-blue { border-color: #0284c7 !important; background-color: #f0f9ff !important; }
+  .callout-emerald { border-color: #059669 !important; background-color: #ecfdf5 !important; }
+  .callout-purple { border-color: #7c3aed !important; background-color: #faf5ff !important; }
+  .callout-amber { border-color: #d97706 !important; background-color: #fffbeb !important; }
+  .callout-rose { border-color: #e11d48 !important; background-color: #fff1f2 !important; }
+
+  .callout-header {
+    margin-bottom: 4pt !important;
+  }
+
+  .callout-badge {
+    font-weight: 800 !important;
+    font-size: 9pt !important;
+  }
+  .callout-blue .callout-badge { color: #0369a1 !important; }
+  .callout-emerald .callout-badge { color: #047857 !important; }
+  .callout-purple .callout-badge { color: #6d28d9 !important; }
+  .callout-amber .callout-badge { color: #b45309 !important; }
+  .callout-rose .callout-badge { color: #be123c !important; }
+
+  .callout-body,
+  .callout-body p,
+  .callout-body strong,
+  .callout-body em {
+    color: #1e293b !important;
+    font-size: 10pt !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Mermaid in print */
+  .mermaid-container {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    padding: 12pt !important;
+    margin: 14pt 0 !important;
+  }
+  .mermaid-container svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Math formulas */
+  .katex-block {
+    margin: 12pt 0 !important;
+    padding: 6pt 0 !important;
+  }
+
+  /* Optional H1 page break */
+  body.print-break-h1 .markdown-body h1:not(:first-of-type) {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+}
