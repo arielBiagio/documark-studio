@@ -15,7 +15,8 @@ import {
   Trash2,
   Check,
   ChevronDown,
-  BookOpen
+  BookOpen,
+  MonitorDown
 } from 'lucide-react';
 
 export default function Navbar({
@@ -33,7 +34,9 @@ export default function Navbar({
   onCopyHtml,
   onCopyMarkdown,
   copiedMd,
-  copiedHtml
+  copiedHtml,
+  canInstall,
+  onInstallApp
 }) {
   const fileInputRef = useRef(null);
 
@@ -218,6 +221,19 @@ export default function Navbar({
         >
           <Trash2 className="w-4 h-4" />
         </button>
+
+        {/* Install PWA Button (shown when installable) */}
+        {canInstall && (
+          <button
+            type="button"
+            onClick={onInstallApp}
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 transition-all"
+            title="Instalar DocuMark Studio como aplicación"
+          >
+            <MonitorDown className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Instalar</span>
+          </button>
+        )}
 
         {/* EXPORT PDF BUTTON - High Impact */}
         <button

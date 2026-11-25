@@ -41,6 +41,34 @@ export default function App() {
   const [copiedMd, setCopiedMd] = useState(false);
   const [copiedHtml, setCopiedHtml] = useState(false);
 
+  // PWA install prompt
+  const [installPromptEvent, setInstallPromptEvent] = useState(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setInstallPromptEvent(e);
+    };
+    const handleAppInstalled = () => {
+      setInstallPromptEvent(null);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallApp = async () => {
+    if (!installPromptEvent) return;
+    installPromptEvent.prompt();
+    const { outcome } = await installPromptEvent.userChoice;
+    if (outcome === 'accepted') {
+      setInstallPromptEvent(null);
+    }
+  };
+
   // Refs for scrolling and textarea
   const editorTextareaRef = useRef(null);
   const previewContainerRef = useRef(null);
@@ -336,6 +364,8 @@ export default function App() {
         onCopyMarkdown={handleCopyMarkdown}
         copiedMd={copiedMd}
         copiedHtml={copiedHtml}
+        canInstall={!!installPromptEvent}
+        onInstallApp={handleInstallApp}
       />
 
       {/* Formatting Toolbar */}
